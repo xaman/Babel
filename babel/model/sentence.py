@@ -24,4 +24,4 @@ class Sentence(object):
         self.languages.append(language)
 
     def __str__(self):
-        return "%s" % self.id
+        return "Sentence{id=%s}" % self.id

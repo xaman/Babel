@@ -40,4 +40,4 @@ class Translation(object):
                     print "\t\t\t" + str(language)
 
     def __str__(self):
-        return "%s\t%s" % (self.version, self.description)
+        return "Translation{version=%s, description=%s}" % (self.version, self.description)

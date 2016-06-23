@@ -21,4 +21,4 @@ class Language(object):
         self.value = value
 
     def __str__(self):
-        return "%s\t%s" % (self.locale, self.value)
+        return "Language{locale=%s, value=%s}" % (self.locale, self.value)

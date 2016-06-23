@@ -31,4 +31,4 @@ class Section(object):
         self.sentences.append(sentence)
 
     def __str__(self):
-        return "%s\t%s" % (self.name, self.description)
+        return "Section{name=%s, description=%s}" % (self.name, self.description)
