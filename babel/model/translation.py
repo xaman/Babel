@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+import logger.logger as logger
+
 
 class Translation(object):
 
@@ -31,13 +33,13 @@ class Translation(object):
         self.sections.append(section)
 
     def print_value(self):
-        print str(self)
+        logger.debug(str(self))
         for section in self.sections:
-            print "\t" + str(section)
+            logger.debug("\t" + str(section))
             for sentence in section.get_sentences():
-                print "\t\t" + str(sentence)
+                logger.debug("\t\t" + str(sentence))
                 for language in sentence.get_languages():
-                    print "\t\t\t" + str(language)
+                    logger.debug("\t\t\t" + str(language))
 
     def __str__(self):
         return "Translation{version=%s, description=%s}" % (self.version, self.description)
