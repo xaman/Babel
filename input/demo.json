@@ -1,0 +1,27 @@
+{
+    "version" : "1.0",
+    "description" : "File to show an example of the sentences JSON",
+    "sections" :
+    [
+            {
+                "name" : "Welcome screen",
+                "description" : "Shows the welcome message to the users",
+                "sentences" :
+                [
+                    {
+                        "id" : "welcome_text",
+                        "en_EN" : "Hello world!",
+                        "es_ES" : "Hola mundo!",
+                        "ca_ES" : "Hola món!"
+                    },
+                    {
+                        "id" : "my_name",
+                        "en_EN" : "My name is ",
+                        "es_ES" : "Mi nombre es ",
+                        "ca_ES" : "El meu nom és"
+                    }
+                ]
+            }
+    ]
+
+}
