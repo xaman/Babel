@@ -39,14 +39,10 @@ def _print_files_list(files):
 def _select_file(files):
     try:
         position = int(raw_input("Select a file position: "))
-        if _valid_position(files, position):
+        if position >= 0 and position < len(files):
             return files[position]
         else:
             logger.error("The file position is not valid")
             _select_file(files)
     except KeyboardInterrupt:
         pass
-
-
-def _valid_position(files, position):
-    return position >= 0 and position < len(files)
