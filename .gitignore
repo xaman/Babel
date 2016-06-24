@@ -90,6 +90,3 @@ ENV/
 
 # macOS stuff
 .DS_Store
-
-# Babel stuff
-./output/
