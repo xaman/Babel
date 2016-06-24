@@ -1,52 +1,39 @@
 {
-    "version" : "1.0",
-    "description" : "File to show an example of the sentences JSON",
-    "sections" :
-    [
-            {
-                "name" : "Welcome screen",
-                "description" : "Shows the welcome message to the users",
-                "sentences" :
-                [
-                    {
-                        "id" : "welcome_text",
-                        "en_EN" : "Hello world!",
-                        "es_ES" : "Hola mundo!",
-                        "ca_ES" : "Hola món!"
-                    },
-                    {
-                        "id" : "my_name",
-                        "en_EN" : "My name is ",
-                        "es_ES" : "Mi nombre es ",
-                        "ca_ES" : "El meu nom és"
-                    }
-                ]
-            },
-            {
-                "name" : "Home screen",
-                "description" : "The featured products of the shop",
-                "sentences" :
-                [
-                    {
-                        "id" : "home_title",
-                        "en_EN" : "Awesome shop",
-                        "es_ES" : "Tienda increible",
-                        "ca_ES" : "Tenda increïble"
-                    },
-                    {
-                        "id" : "featured_products",
-                        "en_EN" : "Featured products",
-                        "es_ES" : "Productos destacados",
-                        "ca_ES" : "Productes destacats"
-                    },
-                    {
-                        "id" : "add_to_cart",
-                        "en_EN" : "Add to cart",
-                        "es_ES" : "Añadir al carro",
-                        "ca_ES" : "Afegir al carro"
-                    }
-                ]
-            }
-    ]
+    "version": "1.0",
+    "description": "File to show an example of the sentences JSON",
+    "sections": [{
+        "name": "Welcome screen",
+        "description": "Shows the welcome message to the users",
+        "sentences": [{
+            "id": "welcome_text",
+            "en_EN": "Hello world!",
+            "es_ES": "Hola mundo!",
+            "ca_ES": "Hola món!"
+        }, {
+            "id": "my_name",
+            "en_EN": "My name is ",
+            "es_ES": "Mi nombre es ",
+            "ca_ES": "El meu nom és"
+        }]
+    }, {
+        "name": "Home screen",
+        "description": "The featured products of the shop",
+        "sentences": [{
+            "id": "home_title",
+            "en_EN": "Awesome shop",
+            "es_ES": "Tienda increible",
+            "ca_ES": "Tenda increïble"
+        }, {
+            "id": "featured_products",
+            "en_EN": "Featured products",
+            "es_ES": "Productos destacados",
+            "ca_ES": "Productes destacats"
+        }, {
+            "id": "add_to_cart",
+            "en_EN": "Add to cart",
+            "es_ES": "Añadir al carro",
+            "ca_ES": "Afegir al carro"
+        }]
+    }]
 
 }
