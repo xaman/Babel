@@ -23,5 +23,16 @@ class Sentence(object):
     def add_language(self, language):
         self.languages.append(language)
 
+    def get_language_by_locale(self, locale):
+        for language in self.languages:
+            if locale == language.get_locale():
+                return language
+
+    def get_locales(self):
+        locales = []
+        for language in self.languages:
+            locales.append(language.get_locale())
+        return locales
+
     def __str__(self):
         return "Sentence{id=%s}" % self.id

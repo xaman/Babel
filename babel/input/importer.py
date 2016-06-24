@@ -4,7 +4,7 @@
 import config
 import file_reader
 import logger.logger as logger
-from directory import Directory
+from model.directory import Directory
 
 
 def get_content():
@@ -37,12 +37,9 @@ def _print_files_list(files):
 
 
 def _select_file(files):
-    try:
-        position = int(raw_input("Select a file position: "))
-        if position >= 0 and position < len(files):
-            return files[position]
-        else:
-            logger.error("The file position is not valid")
-            _select_file(files)
-    except KeyboardInterrupt:
-        pass
+    position = int(raw_input("Select a file position: "))
+    if position >= 0 and position < len(files):
+        return files[position]
+    else:
+        logger.error("The file position is not valid")
+        _select_file(files)
