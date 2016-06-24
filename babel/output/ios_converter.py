@@ -1,20 +1,17 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+import config
 from output.converter import Converter
 
-FOLDER_PREFIX = "values"
-FILE_NAME = "strings.xml"
+FOLDER_SUFIX = ".lproj"
+FILE_NAME = "Localizable.strings"
 
 
-class AndroidConverter(Converter):
+class iOSConverter(Converter):
 
     def __init__(self, translation, folder):
         Converter.__init__(self, translation, folder)
-
-    def _add_header(self, lines):
-        lines.append('<?xml version="1.0" encoding="utf-8"?>\n')
-        lines.append('<resources>\n')
 
     def _add_sentences(self, lines, locale):
         sections = self.translation.get_sections()
@@ -33,20 +30,15 @@ class AndroidConverter(Converter):
         lines.append('*/\n')
 
     def _add_sentence(self, lines, sentence, locale):
-        language = sentence.get_language_by_locale(locale)
-        id = sentence.get_id()
-        value = language.get_value()
-        lines.append('<string id="%s">%s</string>\n' % (id, value))
-
-    def _add_footer(self, lines):
-        lines.append('\n</resources>\n')
+        language_key = sentence.get_language_by_locale(config.DEFAULT_LOCALE)
+        language_value = sentence.get_language_by_locale(locale)
+        key = language_key.get_value()
+        value = language_value.get_value()
+        lines.append('"%s" = "%s";\n' % (key, value))
 
     def _get_folder_for_locale(self, locale):
         language = self._get_language_from_locale(locale)
-        folder_name = FOLDER_PREFIX
-        if (language != self.default_language):
-            folder_name += '-' + language
-        return folder_name
+        return language + FOLDER_SUFIX
 
     def _get_file_name(self):
         return FILE_NAME

@@ -5,6 +5,7 @@ import config
 import logger.logger as logger
 from converter import Converter
 from android_converter import AndroidConverter
+from ios_converter import iOSConverter
 
 EXPORT_TO_ANDROID = 1
 EXPORT_TO_IOS = 2
@@ -36,5 +37,9 @@ def _get_export_folder():
 
 
 def _export(translation, option, folder):
-    converter = AndroidConverter(translation, folder)
+    converter = None
+    if (option == EXPORT_TO_ANDROID):
+        converter = AndroidConverter(translation, folder)
+    else:
+        converter = iOSConverter(translation, folder)
     converter.convert()
