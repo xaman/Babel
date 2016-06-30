@@ -36,7 +36,7 @@ class AndroidConverter(Converter):
         language = sentence.get_language_by_locale(locale)
         id = sentence.get_id()
         value = language.get_value()
-        lines.append('    <string id="%s">%s</string>' % (id, value))
+        lines.append('    <string name="%s">%s</string>' % (id, value))
 
     def _add_footer(self, lines):
         lines.append('')
