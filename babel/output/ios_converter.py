@@ -23,18 +23,18 @@ class iOSConverter(Converter):
     def _add_section(self, lines, section, locale):
         name = section.get_name().upper()
         description = section.get_description()
-        lines.append('\n')
-        lines.append('/*\n')
-        lines.append('* %s\n' % name)
-        lines.append('* %s\n' % description)
-        lines.append('*/\n')
+        lines.append('')
+        lines.append('/*')
+        lines.append('* %s' % name)
+        lines.append('* %s' % description)
+        lines.append('*/')
 
     def _add_sentence(self, lines, sentence, locale):
         language_key = sentence.get_language_by_locale(config.DEFAULT_LOCALE)
         language_value = sentence.get_language_by_locale(locale)
         key = language_key.get_value()
         value = language_value.get_value()
-        lines.append('"%s" = "%s";\n' % (key, value))
+        lines.append('"%s" = "%s";' % (key, value))
 
     def _get_folder_for_locale(self, locale):
         language = self._get_language_from_locale(locale)

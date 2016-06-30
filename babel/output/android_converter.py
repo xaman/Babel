@@ -13,8 +13,8 @@ class AndroidConverter(Converter):
         Converter.__init__(self, translation, folder)
 
     def _add_header(self, lines):
-        lines.append('<?xml version="1.0" encoding="utf-8"?>\n')
-        lines.append('<resources>\n')
+        lines.append('<?xml version="1.0" encoding="utf-8"?>')
+        lines.append('<resources>')
 
     def _add_sentences(self, lines, locale):
         sections = self.translation.get_sections()
@@ -26,20 +26,21 @@ class AndroidConverter(Converter):
     def _add_section(self, lines, section, locale):
         name = section.get_name().upper()
         description = section.get_description()
-        lines.append('\n')
-        lines.append('/*\n')
-        lines.append('* %s\n' % name)
-        lines.append('* %s\n' % description)
-        lines.append('*/\n')
+        lines.append('')
+        lines.append('    /*')
+        lines.append('     * %s' % name)
+        lines.append('     * %s' % description)
+        lines.append('     */')
 
     def _add_sentence(self, lines, sentence, locale):
         language = sentence.get_language_by_locale(locale)
         id = sentence.get_id()
         value = language.get_value()
-        lines.append('<string id="%s">%s</string>\n' % (id, value))
+        lines.append('    <string id="%s">%s</string>' % (id, value))
 
     def _add_footer(self, lines):
-        lines.append('\n</resources>\n')
+        lines.append('')
+        lines.append('</resources>')
 
     def _get_folder_for_locale(self, locale):
         language = self._get_language_from_locale(locale)

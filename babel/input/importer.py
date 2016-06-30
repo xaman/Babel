@@ -11,7 +11,9 @@ def get_content():
     file_name = _get_selected_file()
     if (file_name is not None):
         path = config.INPUT_DIR + "/" + file_name
-        return file_reader.read(path)
+        content = file_reader.read(path)
+        content = _escape_characters(content)
+        return content
 
 
 def _get_selected_file():
@@ -43,3 +45,9 @@ def _select_file(files):
     else:
         logger.error("The file position is not valid")
         _select_file(files)
+
+
+def _escape_characters(input):
+    input = input.replace('\\n', '\\\\n')
+    input = input.replace('\\t', '\\\\t')
+    return input

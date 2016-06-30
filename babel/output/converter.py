@@ -51,7 +51,3 @@ class Converter(object):
 
     def _add_footer(self, lines):
         return NotImplemented
-
-    def _write_lines(self, lines):
-        file = self.folder + "/test.xml"
-        file_writer.write(file, lines)
