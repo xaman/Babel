@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+import logger.logger as logger
 from output.converter import Converter
 
 FOLDER_PREFIX = "values"
@@ -13,8 +14,8 @@ class AndroidConverter(Converter):
         Converter.__init__(self, translation, folder)
 
     def _add_header(self, lines):
-        lines.append('<?xml version="1.0" encoding="utf-8"?>')
-        lines.append('<resources>')
+        lines.append('<?xml version="1.0" encoding="utf-8"?>\n')
+        lines.append('<resources>\n')
 
     def _add_sentences(self, lines, locale):
         sections = self.translation.get_sections()
@@ -26,21 +27,21 @@ class AndroidConverter(Converter):
     def _add_section(self, lines, section, locale):
         name = section.get_name().upper()
         description = section.get_description()
-        lines.append('')
-        lines.append('    /*')
-        lines.append('     * %s' % name)
-        lines.append('     * %s' % description)
-        lines.append('     */')
+        lines.append('\n\t/*\n')
+        lines.append('\t* %s\n' % name)
+        lines.append('\t* %s\n' % description)
+        lines.append('\t*/\n')
 
     def _add_sentence(self, lines, sentence, locale):
         language = sentence.get_language_by_locale(locale)
         id = sentence.get_id()
         value = language.get_value()
-        lines.append('    <string name="%s">%s</string>' % (id, value))
+        if not value:
+            logger.error("Translation not found for '%s' in %s" % (id, locale))
+        lines.append('\t<string name="%s">%s</string>\n' % (id, value))
 
     def _add_footer(self, lines):
-        lines.append('')
-        lines.append('</resources>')
+        lines.append('\n</resources>\n')
 
     def _get_folder_for_locale(self, locale):
         language = self._get_language_from_locale(locale)

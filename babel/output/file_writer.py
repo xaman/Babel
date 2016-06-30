@@ -10,7 +10,7 @@ def write(path, lines):
         _create_folders(path)
     with open(path, 'w') as file:
         for line in lines:
-            file.write(line + '\n')
+            file.write(line)
 
 
 def _file_exists(path):
