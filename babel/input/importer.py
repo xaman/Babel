@@ -48,6 +48,5 @@ def _select_file(files):
 
 
 def _escape_characters(input):
-    input = input.replace('\\n', '\\\\n')
-    input = input.replace('\\t', '\\\\t')
+    input = input.replace('\\', '\\\\')
     return input
