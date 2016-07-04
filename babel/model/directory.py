@@ -9,7 +9,10 @@ from os.path import isfile, join
 class Directory(object):
 
     def __init__(self, path):
-        self.path = path
+        self.path = path if path.endswith('/') else path + '/'
+
+    def get_path(self):
+        return self.path
 
     def get_files(self):
         return [f for f in listdir(self.path) if isfile(join(self.path, f))]

@@ -32,7 +32,7 @@ class Converter(object):
     def _get_file_path(self, locale):
         language_directory = self._get_directory_for_locale(locale)
         file_name = self._get_file_name()
-        return self.directory + '/' + language_directory + '/' + file_name
+        return self.directory.get_path() + language_directory + '/' + file_name
 
     def _get_directory_for_locale(self, locale):
         return NotImplemented

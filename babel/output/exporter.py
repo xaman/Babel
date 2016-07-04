@@ -6,6 +6,7 @@ import logger.logger as logger
 from converter import Converter
 from android_converter import AndroidConverter
 from ios_converter import iOSConverter
+from model.directory import Directory
 
 EXPORT_TO_ANDROID = 1
 EXPORT_TO_IOS = 2
@@ -32,8 +33,9 @@ def _get_export_option():
 
 
 def _get_export_directory():
-    directory = raw_input("Select output directory [%s]: " % config.OUTPUT_DIR)
-    return config.OUTPUT_DIR if len(directory) == 0 else directory
+    default = config.OUTPUT_DIR
+    path = raw_input("Select output directory [%s]: " % default) or default
+    return Directory(path)
 
 
 def _export(translation, option, directory):
