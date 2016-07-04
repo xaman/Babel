@@ -9,7 +9,7 @@ from ios_converter import iOSConverter
 
 EXPORT_TO_ANDROID = 1
 EXPORT_TO_IOS = 2
-EXPORT_TO_WEB = 3
+EXPORT_TO_I20N = 3
 
 
 def export(translation):

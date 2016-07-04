@@ -18,7 +18,7 @@ def get_content():
 
 
 def _get_selected_directory():
-    directory = raw_input("Select a directory [%s]: " % config.INPUT_DIR)
+    directory = raw_input("Select input directory [%s]: " % config.INPUT_DIR)
     return directory if directory else config.INPUT_DIR
 
 

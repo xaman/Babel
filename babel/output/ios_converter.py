@@ -4,7 +4,7 @@
 import config
 from output.converter import Converter
 
-FOLDER_SUFIX = ".lproj"
+DIRECTORY_SUFIX = ".lproj"
 FILE_NAME = "Localizable.strings"
 
 
@@ -37,7 +37,7 @@ class iOSConverter(Converter):
 
     def _get_directory_for_locale(self, locale):
         language = self._get_language_from_locale(locale)
-        return language + FOLDER_SUFIX
+        return language + DIRECTORY_SUFIX
 
     def _get_file_name(self):
         return FILE_NAME

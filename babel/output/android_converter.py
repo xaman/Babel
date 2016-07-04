@@ -4,7 +4,7 @@
 import logger.logger as logger
 from output.converter import Converter
 
-FOLDER_PREFIX = "values"
+DIRECTORY_PREFIX = "values"
 FILE_NAME = "strings.xml"
 
 
@@ -46,7 +46,7 @@ class AndroidConverter(Converter):
 
     def _get_directory_for_locale(self, locale):
         language = self._get_language_from_locale(locale)
-        directory_name = FOLDER_PREFIX
+        directory_name = DIRECTORY_PREFIX
         if (language != self.default_language):
             directory_name += '-' + language
         return directory_name
