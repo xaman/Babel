@@ -36,9 +36,10 @@ class AndroidConverter(Converter):
         language = sentence.get_language_by_locale(locale)
         id = sentence.get_id()
         value = language.get_value()
-        if not value:
+        if value:
+            lines.append('\t<string name="%s">%s</string>\n' % (id, value))
+        else:
             logger.error("Translation not found for '%s' in %s" % (id, locale))
-        lines.append('\t<string name="%s">%s</string>\n' % (id, value))
 
     def _add_footer(self, lines):
         lines.append('\n</resources>\n')
