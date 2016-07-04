@@ -14,15 +14,15 @@ EXPORT_TO_WEB = 3
 
 def export(translation):
     option = _get_export_option()
-    folder = _get_export_folder()
-    _export(translation, option, folder)
+    directory = _get_export_directory()
+    _export(translation, option, directory)
 
 
 def _get_export_option():
     print 'Options:'
     print '1) Export to Android (strings.xml)'
     print '2) Export to iOS (Localizable.strings)'
-    print '3) Export to Web (strings.po)'
+    print '3) Export to I20N (strings.i20n)'
     option = int(raw_input("Select an option: "))
     if option > 0 and option < 3:
         return option
@@ -31,15 +31,15 @@ def _get_export_option():
         _get_export_option()
 
 
-def _get_export_folder():
-    folder = raw_input("Select a destination folder [output/]:")
-    return config.OUTPUT_DIR if len(folder) == 0 else folder
+def _get_export_directory():
+    directory = raw_input("Select output directory [%s]: " % config.OUTPUT_DIR)
+    return config.OUTPUT_DIR if len(directory) == 0 else directory
 
 
-def _export(translation, option, folder):
+def _export(translation, option, directory):
     converter = None
     if (option == EXPORT_TO_ANDROID):
-        converter = AndroidConverter(translation, folder)
+        converter = AndroidConverter(translation, directory)
     else:
-        converter = iOSConverter(translation, folder)
+        converter = iOSConverter(translation, directory)
     converter.convert()

@@ -8,37 +8,37 @@ from model.directory import Directory
 
 
 def get_content():
-    folder = _get_selected_folder()
-    file_name = _get_selected_file(folder)
+    directory = _get_selected_directory()
+    file_name = _get_selected_file(directory)
     if (file_name is not None):
-        path = _get_path(folder, file_name)
+        path = _get_path(directory, file_name)
         content = file_reader.read(path)
         content = _escape_characters(content)
         return content
 
 
-def _get_selected_folder():
-    folder = raw_input("Select a folder [%s]: " % config.INPUT_DIR)
-    return folder if folder else config.INPUT_DIR
+def _get_selected_directory():
+    directory = raw_input("Select a directory [%s]: " % config.INPUT_DIR)
+    return directory if directory else config.INPUT_DIR
 
 
-def _get_selected_file(folder):
-    files = _get_files(folder)
+def _get_selected_file(directory):
+    files = _get_files(directory)
     if (len(files) > 0):
         _print_files_list(files)
         return _select_file(files)
     else:
-        logger.error("The input folder has not files\n")
+        logger.error("The input directory hasn't files\n")
 
 
-def _get_path(folder, file_name):
-    if not folder.endswith('/'):
-        folder = folder + '/'
-    return folder + file_name
+def _get_path(directory, file_name):
+    if not directory.endswith('/'):
+        directory = directory + '/'
+    return directory + file_name
 
 
-def _get_files(folder):
-    dir = Directory(folder)
+def _get_files(directory):
+    dir = Directory(directory)
     return dir.get_files()
 
 
