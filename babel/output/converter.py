@@ -6,10 +6,10 @@ import output.file_writer as file_writer
 
 class Converter(object):
 
-    def __init__(self, translation, folder):
+    def __init__(self, translation, directory):
         self.default_language = 'en'
         self.translation = translation
-        self.folder = folder
+        self.directory = directory
 
     def convert(self):
         locales = self._get_locales()
@@ -30,11 +30,11 @@ class Converter(object):
         file_writer.write(file_path, lines)
 
     def _get_file_path(self, locale):
-        language_folder = self._get_folder_for_locale(locale)
+        language_directory = self._get_directory_for_locale(locale)
         file_name = self._get_file_name()
-        return self.folder + '/' + language_folder + '/' + file_name
+        return self.directory + '/' + language_directory + '/' + file_name
 
-    def _get_folder_for_locale(self, locale):
+    def _get_directory_for_locale(self, locale):
         return NotImplemented
 
     def _get_file_name(self):

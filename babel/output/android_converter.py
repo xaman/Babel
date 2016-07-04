@@ -10,8 +10,8 @@ FILE_NAME = "strings.xml"
 
 class AndroidConverter(Converter):
 
-    def __init__(self, translation, folder):
-        Converter.__init__(self, translation, folder)
+    def __init__(self, translation, directory):
+        Converter.__init__(self, translation, directory)
 
     def _add_header(self, lines):
         lines.append('<?xml version="1.0" encoding="utf-8"?>\n')
@@ -44,12 +44,12 @@ class AndroidConverter(Converter):
     def _add_footer(self, lines):
         lines.append('\n</resources>\n')
 
-    def _get_folder_for_locale(self, locale):
+    def _get_directory_for_locale(self, locale):
         language = self._get_language_from_locale(locale)
-        folder_name = FOLDER_PREFIX
+        directory_name = FOLDER_PREFIX
         if (language != self.default_language):
-            folder_name += '-' + language
-        return folder_name
+            directory_name += '-' + language
+        return directory_name
 
     def _get_file_name(self):
         return FILE_NAME

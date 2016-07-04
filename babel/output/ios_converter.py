@@ -10,8 +10,8 @@ FILE_NAME = "Localizable.strings"
 
 class iOSConverter(Converter):
 
-    def __init__(self, translation, folder):
-        Converter.__init__(self, translation, folder)
+    def __init__(self, translation, directory):
+        Converter.__init__(self, translation, directory)
 
     def _add_sentences(self, lines, locale):
         sections = self.translation.get_sections()
@@ -35,7 +35,7 @@ class iOSConverter(Converter):
         value = language_value.get_value()
         lines.append('"%s" = "%s";\n' % (key, value))
 
-    def _get_folder_for_locale(self, locale):
+    def _get_directory_for_locale(self, locale):
         language = self._get_language_from_locale(locale)
         return language + FOLDER_SUFIX
 
