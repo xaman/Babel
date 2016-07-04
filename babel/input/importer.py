@@ -8,16 +8,22 @@ from model.directory import Directory
 
 
 def get_content():
-    file_name = _get_selected_file()
+    folder = _get_selected_folder()
+    file_name = _get_selected_file(folder)
     if (file_name is not None):
-        path = config.INPUT_DIR + "/" + file_name
+        path = _get_path(folder, file_name)
         content = file_reader.read(path)
         content = _escape_characters(content)
         return content
 
 
-def _get_selected_file():
-    files = _get_files()
+def _get_selected_folder():
+    folder = raw_input("Select a folder [%s]: " % config.INPUT_DIR)
+    return folder if folder else config.INPUT_DIR
+
+
+def _get_selected_file(folder):
+    files = _get_files(folder)
     if (len(files) > 0):
         _print_files_list(files)
         return _select_file(files)
@@ -25,8 +31,14 @@ def _get_selected_file():
         logger.error("The input folder has not files\n")
 
 
-def _get_files():
-    dir = Directory(config.INPUT_DIR)
+def _get_path(folder, file_name):
+    if not folder.endswith('/'):
+        folder = folder + '/'
+    return folder + file_name
+
+
+def _get_files(folder):
+    dir = Directory(folder)
     return dir.get_files()
 
 
