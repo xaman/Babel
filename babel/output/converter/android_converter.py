@@ -3,6 +3,7 @@
 
 import logger.logger as logger
 from converter import Converter
+from output.replacer.android_replacer import AndroidReplacer
 
 DIRECTORY_PREFIX = "values"
 FILE_NAME = "strings.xml"
@@ -12,6 +13,7 @@ class AndroidConverter(Converter):
 
     def __init__(self, translation, directory):
         Converter.__init__(self, translation, directory)
+        self.replacer = AndroidReplacer()
 
     def _add_header(self, lines):
         lines.append('<?xml version="1.0" encoding="utf-8"?>\n')
@@ -36,8 +38,9 @@ class AndroidConverter(Converter):
         language = sentence.get_language_by_locale(locale)
         id = sentence.get_id()
         value = language.get_value()
-        if value:
-            lines.append('\t<string name="%s">%s</string>\n' % (id, value))
+        replaced = self.replacer.replace(value)
+        if replaced:
+            lines.append('\t<string name="%s">%s</string>\n' % (id, replaced))
         else:
             logger.error("Translation not found for '%s' in %s" % (id, locale))
 
