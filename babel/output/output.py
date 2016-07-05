@@ -3,9 +3,8 @@
 
 import config
 import logger.logger as logger
-from converter import Converter
-from android_converter import AndroidConverter
-from ios_converter import iOSConverter
+from converter.android_converter import AndroidConverter
+from converter.ios_converter import iOSConverter
 from model.directory import Directory
 
 EXPORT_TO_ANDROID = 1

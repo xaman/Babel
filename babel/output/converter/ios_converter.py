@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 import config
-from output.converter import Converter
+from converter import Converter
 
 DIRECTORY_SUFIX = ".lproj"
 FILE_NAME = "Localizable.strings"

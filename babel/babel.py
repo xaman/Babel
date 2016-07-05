@@ -3,9 +3,9 @@
 
 import sys
 import config
-import input.importer as importer
+import input.input as input
 import parser.json_parser as parser
-import output.exporter as exporter
+import output.output as output
 
 
 DEFAULT_ENCODING = "UTF-8"
@@ -17,7 +17,7 @@ def _main():
         _print_welcome()
         content = _get_input_file_content()
         translation = _parse_content(content)
-        exporter.export(translation)
+        output.export(translation)
     except KeyboardInterrupt:
         pass
 
@@ -36,7 +36,7 @@ def _print_welcome():
 
 
 def _get_input_file_content():
-    return importer.get_content()
+    return input.get_content()
 
 
 def _parse_content(content):

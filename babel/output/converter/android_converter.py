@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 import logger.logger as logger
-from output.converter import Converter
+from converter import Converter
 
 DIRECTORY_PREFIX = "values"
 FILE_NAME = "strings.xml"
