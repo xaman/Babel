@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+import datetime
 import output.file_writer as file_writer
 
 
@@ -51,3 +52,6 @@ class Converter(object):
 
     def _add_footer(self, lines):
         return NotImplemented
+
+    def _get_datetime(self):
+        return datetime.datetime.now().strftime("%Y-%m-%d %H:%M")

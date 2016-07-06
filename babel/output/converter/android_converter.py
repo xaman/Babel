@@ -17,6 +17,7 @@ class AndroidConverter(Converter):
 
     def _add_header(self, lines):
         lines.append('<?xml version="1.0" encoding="utf-8"?>\n')
+        lines.append('<!-- Version: %s -->\n' % self._get_datetime())
         lines.append('<resources>\n')
 
     def _add_sentences(self, lines, locale):
@@ -29,18 +30,18 @@ class AndroidConverter(Converter):
     def _add_section(self, lines, section, locale):
         name = section.get_name().upper()
         description = section.get_description()
-        lines.append('\n\t/*\n')
-        lines.append('\t* %s\n' % name)
-        lines.append('\t* %s\n' % description)
-        lines.append('\t*/\n')
+        lines.append('\n    <!--\n')
+        lines.append('        %s\n' % name)
+        lines.append('        %s\n' % description)
+        lines.append('    -->\n')
 
     def _add_sentence(self, lines, sentence, locale):
         language = sentence.get_language_by_locale(locale)
         id = sentence.get_id()
         value = language.get_value()
-        replaced = self.replacer.replace(value)
-        if replaced:
-            lines.append('\t<string name="%s">%s</string>\n' % (id, replaced))
+        value = self.replacer.replace(value)
+        if value:
+            lines.append('    <string name="%s">%s</string>\n' % (id, value))
         else:
             logger.error("Translation not found for '%s' in %s" % (id, locale))
 
