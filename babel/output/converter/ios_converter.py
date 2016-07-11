@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 from converter import Converter
+from output.replacer.ios_replacer import iOSReplacer
 
 DEFAULT_LOCALE = "es_ES"
 DIRECTORY_SUFIX = ".lproj"
@@ -12,6 +13,7 @@ class iOSConverter(Converter):
 
     def __init__(self, translation, directory):
         Converter.__init__(self, translation, directory)
+        self.replacer = iOSReplacer()
 
     def _add_header(self, lines):
         lines.append('/** Version: %s **/\n' % self._get_datetime())
@@ -34,8 +36,8 @@ class iOSConverter(Converter):
     def _add_sentence(self, lines, sentence, locale):
         language_key = sentence.get_language_by_locale(DEFAULT_LOCALE)
         language_value = sentence.get_language_by_locale(locale)
-        key = language_key.get_value()
-        value = language_value.get_value()
+        key = self.replacer.replace(language_key.get_value())
+        value = self.replacer.replace(language_value.get_value())
         lines.append('"%s" = "%s";\n' % (key, value))
 
     def _get_directory_for_locale(self, locale):
