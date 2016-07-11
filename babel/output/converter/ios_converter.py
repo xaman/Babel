@@ -13,6 +13,9 @@ class iOSConverter(Converter):
     def __init__(self, translation, directory):
         Converter.__init__(self, translation, directory)
 
+    def _add_header(self, lines):
+        lines.append('/** Version: %s **/\n' % self._get_datetime())
+
     def _add_sentences(self, lines, locale):
         sections = self.translation.get_sections()
         for section in sections:
