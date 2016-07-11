@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-import config
 from converter import Converter
 
+DEFAULT_LOCALE = "es_ES"
 DIRECTORY_SUFIX = ".lproj"
 FILE_NAME = "Localizable.strings"
 
@@ -29,7 +29,7 @@ class iOSConverter(Converter):
         lines.append('*/\n')
 
     def _add_sentence(self, lines, sentence, locale):
-        language_key = sentence.get_language_by_locale(config.DEFAULT_LOCALE)
+        language_key = sentence.get_language_by_locale(DEFAULT_LOCALE)
         language_value = sentence.get_language_by_locale(locale)
         key = language_key.get_value()
         value = language_value.get_value()

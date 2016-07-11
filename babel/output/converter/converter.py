@@ -8,7 +8,6 @@ import output.file_writer as file_writer
 class Converter(object):
 
     def __init__(self, translation, directory):
-        self.default_language = 'en'
         self.translation = translation
         self.directory = directory
 
